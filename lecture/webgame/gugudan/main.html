@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>리액트로 구구단 만들기</title>
+  <script src="../plugins/react.development.js"></script>
+  <script src="../plugins/react-dom.development.js"></script>
+  <script src="../plugins/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div> 
+  <script type="text/babel">
+    class Gugudan extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          firstNum : Math.ceil(Math.random() * 9), // 0~9
+          secondNum : Math.ceil(Math.random() * 9),
+          value : '',
+          result : ''
+        }
+      }
+
+      render(){
+        return (
+          <div>
+            <p>{this.state.firstNum} 곱하기 {this.state.secondNum}은?</p>  
+            <form onSubmit={() => {return false;}}>
+              <input type="number" value={this.state.value} onChange={(e) => this.setState({value : e.target.value})} />
+              <button type="submit">입력</button>  
+            </form>
+            <p>{this.state.result}</p>
+          </div>
+        );
+      }
+    }
+
+    ReactDOM.render(<Gugudan />, document.querySelector('#root'));
+  </script>
+</body>
+</html>

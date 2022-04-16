@@ -7,21 +7,12 @@
   <title>리액트로 첫 번째 컴포넌트 만들기</title>
   <script src="plugins/react.development.js"></script>
   <script src="plugins/react-dom.development.js"></script>
+  <script src="plugins/babel.min.js"></script>
 </head>
 <body>
   <div id="root"></div> 
-  <!-- 결과: 
-    <div id="root">
-      <button>Like</button>
-    </div> 
-  -->  
-  <!-- 결과: 
-    <div id="root">
-      <button type="submit" onclick="() =>{console.log('clicked')}">Like</button>
-    </div> 
-  -->
-  <script>
-    const e = React.createElement; // HTML 태그를 만듬.
+  <script type="text/babel">
+    /* const e = React.createElement; // HTML 태그를 만듬. */
 
     class LikeButton extends React.Component {
       constructor(props) {
@@ -32,13 +23,14 @@
       }
 
       render(){
-        /* return e('button', null, 'Like'); // <button>Like</button> */ 
-        /* return e('button', {onClick: () => {console.log('clicked')}, type:'submit'}, 'Like'); */
-        return e('button', {onClick: () => this.setState({liked: true})}, this.state.liked === true ? 'Liked' : 'Like');
+        /* return e('button', {onClick: () => this.setState({liked: true}), type:'submit'}, this.state.liked === true ? 'Liked' : 'Like'); */
+        return <button type="submit" onClick={() => this.setState({liked: true})}>{this.state.liked ? 'Liked' : 'Like'}</button>;
+        /* 같은 표현 : return <button type="submit" onClick={() => this.setState({liked: true})}>{this.state.liked === true ? 'Liked' : 'Like'}</button>; */
       }
     }
 
-    ReactDOM.render(e(LikeButton), document.querySelector('#root'));
+    /* ReactDOM.render(e(LikeButton), document.querySelector('#root')); */
+    ReactDOM.render(<LikeButton />, document.querySelector('#root'));
   </script>
 </body>
 </html>

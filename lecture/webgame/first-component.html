@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>리액트로 첫 번째 컴포넌트 만들기</title>
+  <script src="plugins/react.development.js"></script>
+  <script src="plugins/react-dom.development.js"></script>
+</head>
+<body>
+  <div id="root"></div> 
+  <!-- 결과: 
+    <div id="root">
+      <button>Like</button>
+    </div> 
+  -->
+  <script>
+    const e = React.createElement; // HTML 태그를 만듬.
+
+    class LikeButton extends React.Component {
+      constructor(props) {
+        super(props);
+      }
+
+      render(){
+        return e('button', null, 'Like'); // <button>Like</button> 
+        /* return e('button', {onClick: () => this.setState({liked: true})}, 'Like'); */
+      }
+    }
+
+    ReactDOM.render(e(LikeButton), document.querySelector('#root'));
+  </script>
+</body>
+</html>

@@ -14,6 +14,11 @@
     <div id="root">
       <button>Like</button>
     </div> 
+  -->  
+  <!-- 결과: 
+    <div id="root">
+      <button type="submit" onclick="() =>{console.log('clicked')}">Like</button>
+    </div> 
   -->
   <script>
     const e = React.createElement; // HTML 태그를 만듬.
@@ -21,11 +26,15 @@
     class LikeButton extends React.Component {
       constructor(props) {
         super(props);
+        this.state = {
+          liked : false
+        }
       }
 
       render(){
-        return e('button', null, 'Like'); // <button>Like</button> 
-        /* return e('button', {onClick: () => this.setState({liked: true})}, 'Like'); */
+        /* return e('button', null, 'Like'); // <button>Like</button> */ 
+        /* return e('button', {onClick: () => {console.log('clicked')}, type:'submit'}, 'Like'); */
+        return e('button', {onClick: () => this.setState({liked: true})}, this.state.liked === true ? 'Liked' : 'Like');
       }
     }
 

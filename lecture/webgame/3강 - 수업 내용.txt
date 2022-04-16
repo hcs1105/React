@@ -1,0 +1,10 @@
+1. 수업 일자 : 2022.04.16
+2. 담당 강사 : Zerocho 선생님
+
+▣ React는 기본적으로 컴포넌트들을 적용할 '<div id="root"></div>'가 필요함. 
+▣ render() 메소드에서 HTML 속성들은 객체 형태로 작성함.
+   ex) return e('button', {onClick: () => {console.log('clicked')}, type:'submit'}, 'Like');
+▣ HTML 속성들은 카멜 케이스 표기법으로 작성함(onclick -> onClick).
+▣ 상태(state)는 '바뀔 수 있는 부분'이라고 생각할 것.
+▣ React의 컴포넌트 상태를 확인하려면, React 확장 프로그램을 설치함.
+▣ React의 컴포넌트 상태가 변경되면, 화면도 저절로 바뀝니다.

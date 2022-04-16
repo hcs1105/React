@@ -2,8 +2,8 @@
 2. 담당 강사 : Zerocho 선생님
 
 ▣ Webpack은 복수의 자바스크립트 파일들을 HTML에서 실행할 수 있는 하나의 자바스크립트 파일로 생성해 주는 도구
-▣ react.development.js : React가 동작하는 핵심적인 코드들을 작성한 자바스크립트 파일
-▣ react-dom.development.js : React 코드들을 웹에 구현하려고 사용된 자바스크립트 파일
+▣ react.development.js: React가 동작하는 핵심적인 코드들을 작성한 자바스크립트 파일
+▣ react-dom.development.js: React 코드들을 웹에 구현하려고 사용된 자바스크립트 파일
 ▣ React를 실제로 배포할 때 react.production.js과 react-dom.production.js로 파일명을 변경해야 됨.
 
 ▣ 클래스는 기본적으로 constructor()이 있다고 생각하세요.

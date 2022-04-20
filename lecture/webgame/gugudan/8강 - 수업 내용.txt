@@ -1,0 +1,17 @@
+1. 수업 일자 : 2022.04.20
+2. 담당 강사 : Zerocho 선생님
+
+▣ React는 최상위 <div> 요소 안에 <div></div>로 감싸야 마크업에 에러가 발생하지 않음.
+▣ 쓸데없는 <div></div>를 없애려면 '<></>'로 표기함.
+▣ 바벨이 '<></>'를 인식하지 않으면 '<React.Fragment></React.Fragment>'를 적음.
+▣ 중괄호()는 그룹 연산자이고 연산자들 사이의 우선 순위를 정할 때만 제외하면 없어도 상관없음.
+  return (
+    <React.Fragment>
+      <p>{this.state.firstNum} 곱하기 {this.state.secondNum}은?</p>  
+      <form onSubmit = {this.onSubmit}>
+        <input type="number" value={this.state.value} onChange={this.onChange} />
+        <button type="submit">입력</button>  
+      </form>
+      <p>{this.state.result}</p>
+    </React.Fragment>
+  );

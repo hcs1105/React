@@ -27,8 +27,8 @@
         return (
           <div>
             <p>{this.state.firstNum} 곱하기 {this.state.secondNum}은?</p>  
-            <form onSubmit={() => {return false;}}>
-              <input type="number" value={this.state.value} onChange={(e) => this.setState({value : e.target.value})} />
+            <form>
+              <input type="number" value={this.state.value} onChange={e => this.setState({value : e.target.value})} />
               <button type="submit">입력</button>  
             </form>
             <p>{this.state.result}</p>

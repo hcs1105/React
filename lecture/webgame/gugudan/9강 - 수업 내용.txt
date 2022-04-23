@@ -1,0 +1,11 @@
+1. 수업 일자 : 2022.04.24
+2. 담당 강사 : Zerocho 선생님
+
+▣ 이전 값과 새롭게 적용할 값을 구분하기 위해 setState 속성 안에 return할 수 있는 함수를 넣어 줌.
+   ex) 버튼을 누를 때마다 숫자가 1씩 증가하는 경우
+   this.setState((prevState) => {
+     return {
+       value : prevState.value + 1
+     };
+   });
+▣ setState() 속성은 비동기임.

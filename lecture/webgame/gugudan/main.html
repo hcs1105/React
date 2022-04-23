@@ -13,21 +13,18 @@
   <div id="root"></div> 
   <script type="text/babel">
     class Gugudan extends React.Component {
-      constructor(props) {
-        super(props);
-        this.state = {
-          firstNum : Math.ceil(Math.random() * 9), // 0~9
-          secondNum : Math.ceil(Math.random() * 9),
-          value : '',
-          result : ''
-        };
-      }
-
+      state = {
+        firstNum : Math.ceil(Math.random() * 9), // 0~9
+        secondNum : Math.ceil(Math.random() * 9),
+        value : '',
+        result : ''
+      };
+      
       onSubmit = e => {
         e.preventDefault();
         if(parseInt(this.state.value) === this.state.firstNum * this.state.secondNum){
           this.setState({
-            result : '정답',
+            result : '정답 : ' + this.state.value,
             firstNum : Math.ceil(Math.random() * 9),
             secondNum : Math.ceil(Math.random() * 9),
             value : ''

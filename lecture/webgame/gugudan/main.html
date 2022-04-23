@@ -45,18 +45,22 @@
         this.setState({value : e.target.value});
       };
 
+      onRefInput = (c) => {
+        this.input = c;
+      }
+
       input;
 
       render(){
         return (
-          <React.Fragment>
+          <div>
             <p>{this.state.firstNum} 곱하기 {this.state.secondNum}은?</p>  
             <form onSubmit = {this.onSubmit}>
-              <input type="number" ref={(c) => {this.input = c;}} value={this.state.value} onChange={this.onChange} />
+              <input type="number" ref={this.onRefInput} value={this.state.value} onChange={this.onChange} />
               <button type="submit">입력</button>  
             </form>
             <p>{this.state.result}</p>
-          </React.Fragment>
+          </div>
         );
       }
     }

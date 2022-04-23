@@ -17,7 +17,7 @@
   );
 ▣ Form 요소가 있으면 onSubmit 이벤트이고 없으면 onClick 이벤트를 사용함(강사의 경우).
 ▣ 함수를 별도로 분리할 때 function 키워드를 사용하면 this의 대상이 달라지므로 무조건 화살표 함수 키워드를 사용함.
-▣ constructor 키워드를 제외하면 다음과 같이 사용될 수 있습니다.
+▣ constructor 키워드를 제외하면 다음과 같이 사용될 수 있음.
   constructor(props) {
     super(props);
     this.state = {

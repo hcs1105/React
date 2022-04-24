@@ -1,0 +1,17 @@
+1. 수업 일자 : 2022.04.24
+2. 담당 강사 : Zerocho 선생님
+
+▣ Class 컴포넌트로 구구단을 만드는 경우
+   class Gugudan extends React.component {
+
+   }
+▣ 함수 컴포넌트로 구구단을 만드는 경우
+   const Gugudan = () => {
+     return <div>Hello, Hook</div>;
+   }
+▣ 함수 컴포넌트 자체가 Hook는 아님. 
+▣ 함수 컴포넌트를 사용하는 경우
+   - state() 메소드를 적용할 필요가 없을 때
+   - ref 속성을 사용할 필요가 없을 때
+▣ 함수 컴포넌트에 state() 메소드와 ref 속성을 사용하기 위해 React Hooks가 도입됨.
+▣ React는 클래스형 컴포넌트보다 React Hooks를 권장함.

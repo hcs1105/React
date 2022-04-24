@@ -1,0 +1,16 @@
+1. 수업 일자 : 2022.04.24
+2. 담당 강사 : Zerocho 선생님
+
+▣ jsx 파일을 생성할 때 const React = require('react'); 작성함.
+▣ 여러 개의 jsx 파일로 분리할 때 require() 함수와 exports 속성을 사용함.
+   ex) wordRelay.jsx의 경우 
+       - 패키지나 라이브러리, 다른 컴포넌트를 가져오기 위해 작성
+         const React = require('react');
+         const { Component } = React;
+                    .
+                    .
+                    .
+       - 해당 컴포넌트를 다른 컴포넌트에서 사용하기 위해 작성
+         module.exports = WordRelay;
+▣ 웹팩을 작성할 때 entry 속성과 output 속성이 제일 중요함.
+▣ 웹팩에서 entry 속성에 포함된 app 속성을 작성할 때 불러오는 파일 확장자 jsx는 적지 않아도 됨.

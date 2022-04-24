@@ -12,6 +12,9 @@
 <body>
   <div id="root"></div> 
   <script type="text/babel">
+    /*
+     * Class형 컴포넌트
+     *
     class Gugudan extends React.Component {
       state = {
         firstNum : Math.ceil(Math.random() * 9), // 0~9
@@ -45,24 +48,66 @@
         this.setState({value : e.target.value});
       };
 
-      onRefInput = (c) => {
+      onRefInput = c => {
         this.input = c;
-      }
+      };
 
       input;
 
       render(){
         return (
-          <div>
+          <React.Fragment>
             <p>{this.state.firstNum} 곱하기 {this.state.secondNum}은?</p>  
             <form onSubmit = {this.onSubmit}>
               <input type="number" ref={this.onRefInput} value={this.state.value} onChange={this.onChange} />
               <button type="submit">입력</button>  
             </form>
             <p>{this.state.result}</p>
-          </div>
+          </React.Fragment>
         );
       }
+    }
+    */
+
+    /*
+     * 함수형 컴포넌트
+     */
+    const Gugudan = () => { // 비구조화 할당 문법(구조 분해 할당 문법) 사용
+      const [firstNum, setFirstNum] = React.useState(Math.ceil(Math.random() * 9)); 
+      const [secondNum, setSecondNum] = React.useState(Math.ceil(Math.random() * 9)); 
+      const [value, setValue] = React.useState(''); 
+      const [result, setResult] = React.useState(''); 
+      const inputRef = React.useRef(null);
+
+      const onChangeInput = e => {
+        setValue(e.target.value);
+      };
+
+      const onSubmitForm = e => {
+        e.preventDefault();
+        if(parseInt(value) === firstNum * secondNum){
+          setResult('정답 : ' + value);
+          setFirstNum(Math.ceil(Math.random() * 9));
+          setSecondNum(Math.ceil(Math.random() * 9));
+          setValue('');
+          inputRef.current.focus();   
+        } else {
+          setResult('땡');
+          setValue('');
+          inputRef.current.focus();
+        }
+      };
+
+      return (
+        <React.Fragment>
+          <p>{firstNum} 곱하기 {secondNum}은?</p>  
+          <form onSubmit = {onSubmitForm}>
+            <input type="number" ref={inputRef} value={value} onChange={onChangeInput} />
+            <button type="submit">입력</button>  
+          </form>
+          <p>{result}</p>
+        </React.Fragment>
+      );
     }
 
     ReactDOM.render(<Gugudan />, document.querySelector('#root'));

@@ -1,0 +1,99 @@
+1. 수업 일자 : 2022.04.24
+2. 담당 강사 : Zerocho 선생님
+
+▣ state 속성값이 바뀌면 class 컴포넌트 render() 메소드가 다시 실행되지만 함수 컴포넌트는 함수 자체가 다시 실행됨.
+▣ 그래서 함수 컴포넌트가 class 컴포넌트보다 조금 느릴 수 있음.
+▣ React는 id 속성과 달리 class 속성을 지원하지 않으므로 className 속성을 사용함.
+▣ React는 label 요소에 쓰이는 for 속성을 지원하지 않으므로 htmlFor 속성을 사용함.
+▣ state 속성을 객체로 만드는 것도 가능하지만 firstNum, secondNum 변수값이 사라짐.
+   const Gugudan = () => {
+      const [firstNum, setFirstNum] = React.useState(Math.ceil(Math.random() * 9)); 
+      const [secondNum, setSecondNum] = React.useState(Math.ceil(Math.random() * 9)); 
+      const [value, setValue] = React.useState(''); 
+      const [result, setResult] = React.useState(''); 
+      const inputRef = React.useRef(null);
+      
+      const onChangeInput = e => {
+        setValue(e.target.value);
+      };
+
+      const onSubmitForm = e => {
+        e.preventDefault();
+        if(parseInt(value) === firstNum * secondNum){
+          setResult('정답 : ' + value);
+          setFirstNum(Math.ceil(Math.random() * 9));
+          setSecondNum(Math.ceil(Math.random() * 9));
+          setValue('');
+          inputRef.current.focus();   
+        } else {
+          setResult('땡');
+          setValue('');
+          inputRef.current.focus();
+        }
+      };
+
+      return (
+        <React.Fragment>
+          <p>{firstNum} 곱하기 {secondNum}은?</p>  
+          <form onSubmit = {onSubmitForm}>
+            <input type="number" ref={inputRef} value={value} onChange={onChangeInput} />
+            <button type="submit">입력</button>  
+          </form>
+          <p>{result}</p>
+        </React.Fragment>
+      );
+   };
+
+   [같은 표현]
+   const Gugudan = () => {
+      const [state, setState] = React.useState({
+         firstNum : Math.ceil(Math.random() * 9),
+         secondNum : Math.ceil(Math.random() * 9),
+         value : '',
+         result : ''
+      });
+
+      const onChangeInput = e => {
+         setState({
+            value : e.target.value
+         });
+      };
+
+      const onSubmitForm = e => {
+        e.preventDefault();
+        if(parseInt(state.value) === state.firstNum * state.secondNum){
+           setState({
+              result : '정답 : ' + state.value,
+              firstNum : Math.ceil(Math.random() * 9),
+              secondNum : Math.ceil(Math.random() * 9),
+              value : ''
+           });
+           inputRef.current.focus();   
+        } else {
+           setState({
+              result : '땡 : ' + state.value;
+              value : '';
+           });
+           inputRef.current.focus();
+        }
+      };
+
+      return (
+        <React.Fragment>
+          <p>{state.firstNum} 곱하기 {state.secondNum}은?</p>  
+          <form onSubmit = {onSubmitForm}>
+            <input type="number" ref={inputRef} value={state.value} onChange={onChangeInput} />
+            <button type="submit">입력</button>  
+          </form>
+          <p>{state.result}</p>
+        </React.Fragment>
+      );
+   };
+▣ Class 컴포넌트처럼 이전 state 속성값을 활용하여 리턴(return)할 수 있음. 그래서 state 속성의 비동기 문제가      
+   발생하지 않음 
+   - setCounter(c => c + 1);
+   - setResult((prevResult) => {
+       return (
+         '정답 : ' + value
+       );
+     });

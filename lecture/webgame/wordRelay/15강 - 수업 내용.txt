@@ -1,0 +1,5 @@
+1. 수업 일자 : 2022.05.10
+2. 담당 강사 : Zerocho 선생님
+
+▣ webpack를 사용하려면 명령어로 등록하거나 package.json 파일에서 scripts 속성에 작성함. 
+▣ 'npx wepack' 명령어로 webpack를 사용할 수 있음. 

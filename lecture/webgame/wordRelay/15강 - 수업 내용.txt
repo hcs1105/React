@@ -1,5 +1,14 @@
-1. 수업 일자 : 2022.05.10
+1. 수업 일자 : 2022.05.10, 2022.05.12
 2. 담당 강사 : Zerocho 선생님
 
-▣ webpack를 사용하려면 명령어로 등록하거나 package.json 파일에서 scripts 속성에 작성함. 
-▣ 'npx wepack' 명령어로 webpack를 사용할 수 있음. 
+▣ webpack을 사용하려면 명령어로 등록하거나 package.json 파일에서 scripts 속성에 작성함. 
+▣ 'npx wepack' 명령어로 webpack을 사용할 수 있음. 
+▣ .jsx 파일을 인식하지 못하므로 babel를 설치해야 함. 
+▣ babel를 설치하는 방법
+  - npm i -D @babel/core @babel/preset-env @babel/preset-react
+    @babel/core : babel의 기본적인 것을 지원, 
+    @babel/preset-env : 최신 문법을 브라우저에 맞추어 옛날 문법으로 바꾸어 줌.
+    @babel/preset-react : jsx와 같은 파일 형식을 지원.
+  - npm i -D babel-loader -> babel과 webpack을 연결해 줌.
+▣ webpack을 설치할 때, rules 속성에 여러 개의 규칙들을 설정할 수 있으므로 rules 속성값은 배열임.
+  - npm i -D @babel/plugin-proposal-class-properties -> class 문법 지원.

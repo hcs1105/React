@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>리액트로 구구단 만들기</title>
+  <script src="../plugins/react.development.js"></script>
+  <script src="../plugins/react-dom.development.js"></script>
+  <script src="../plugins/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div> 
+  <script type="text/babel">
+    const Gugudan = () => { // 비구조화 할당 문법(구조 분해 할당 문법) 사용
+      const [firstNum, setFirstNum] = React.useState(Math.ceil(Math.random() * 9)); 
+      const [secondNum, setSecondNum] = React.useState(Math.ceil(Math.random() * 9)); 
+      const [value, setValue] = React.useState(''); 
+      const [result, setResult] = React.useState(''); 
+      const inputRef = React.useRef(null);
+
+      const onChangeInput = e => {
+        setValue(e.target.value);
+      };
+
+      const onSubmitForm = e => {
+        e.preventDefault();
+        if(parseInt(value) === firstNum * secondNum){
+          setResult('정답 : ' + value);
+          setFirstNum(Math.ceil(Math.random() * 9));
+          setSecondNum(Math.ceil(Math.random() * 9));
+          setValue('');
+          inputRef.current.focus();   
+        } else {
+          setResult('땡');
+          setValue('');
+          inputRef.current.focus();
+        }
+      };
+
+      return (
+        <React.Fragment>
+          <p>{firstNum} 곱하기 {secondNum}은?</p>  
+          <form onSubmit = {onSubmitForm}>
+            <input type="number" ref={inputRef} value={value} onChange={onChangeInput} />
+            <button type="submit">입력</button>  
+          </form>
+          <p>{result}</p>
+        </React.Fragment>
+      );
+    }
+
+    ReactDOM.render(<Gugudan />, document.querySelector('#root'));
+  </script>
+</body>
+</html>

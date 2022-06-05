@@ -1,0 +1,15 @@
+1. 수업 일자 : 2022.06.05
+2. 담당 강사 : Zerocho 선생님
+
+▣ 웹팩(webpack)을 설치하는 방법.
+   - npm init -> package.json 파일 생성
+   - npm i react react-dom -> react, react-dom 설치
+   - npm i -D webpack webpack-cli -> webpack, webpack-cli 설치, -D : 개발용
+   - package.json 파일에 있는 폴더에 webpack.config.js 파일과 client.jsx 파일 생성 
+▣ babel를 설치하는 방법
+  - npm i -D @babel/core @babel/preset-env @babel/preset-react
+    @babel/core : babel의 기본적인 것을 지원, 
+    @babel/preset-env : 최신 문법을 브라우저에 맞추어 옛날 문법으로 바꾸어 줌.
+    @babel/preset-react : jsx와 같은 파일 형식을 지원.
+  - npm i -D babel-loader -> babel과 webpack을 연결해 줌.
+  ▣ webpack.config.js 파일을 생성함.

@@ -12,11 +12,14 @@ module.exports = {
   }, 
   module : {
     rules : [{
-      test : /\.jsx?$/, // js 파일과 jsx 파일에 rule를 적용함. 그리고 $는 붙이지 않아도 됨.
-      loader : 'babel-loader',      
-      options : {
-        presets : ['@babel/preset-env', '@babel/preset-react']
-      },
+      test : /\.jsx?$/, // js 파일과 jsx 파일에 rules를 적용함. 그리고 $는 붙이지 않아도 됨.
+      exclude : /(node_modules|bower_components)/,
+      use : [{
+        loader : 'babel-loader',   
+        options : {
+          presets : ['@babel/preset-env', '@babel/preset-react']
+        },
+      }],
     }],
   },
   output : {

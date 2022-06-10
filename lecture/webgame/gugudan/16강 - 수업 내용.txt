@@ -1,4 +1,4 @@
-1. 수업 일자 : 2022.06.05
+1. 수업 일자 : 2022.06.05, 2022.06.10
 2. 담당 강사 : Zerocho 선생님
 
 ▣ 웹팩(webpack)을 설치하는 방법.
@@ -12,4 +12,5 @@
     @babel/preset-env : 최신 문법을 브라우저에 맞추어 옛날 문법으로 바꾸어 줌.
     @babel/preset-react : jsx와 같은 파일 형식을 지원.
   - npm i -D babel-loader -> babel과 webpack을 연결해 줌.
-  ▣ webpack.config.js 파일을 생성함.
+▣ webpack.config.js 파일을 생성함.
+▣ <>는 <React.Fragment>의 간략한 표현임.

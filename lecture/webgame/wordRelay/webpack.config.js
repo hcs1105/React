@@ -12,12 +12,23 @@ module.exports = {
   }, // 입력
   module : {
     rules : [{
-      test : /\.jsx?/, // js 파일과 jsx 파일에 rule를 적용함.
-      loader : 'babel-loader',
-      options : {
-        presets : ['@babel/preset-env', '@babel/preset-react'],
-        plugins : ['@babel/plugin-proposal-class-properties'],
-      },
+      test : /\.jsx?$/, // js 파일과 jsx 파일에 rules를 적용함. 그리고 $는 붙이지 않아도 됨.
+      exclude : /(node_modules|bower_components)/,
+      use : [{
+        loader : 'babel-loader',   
+        options : {
+          presets : [
+            ['@babel/preset-env', {
+              targets : {
+                browsers : ['> 1% in KR'], // 관련 사이트 - https://github.com/browserslist/browserslist
+              },
+              debug : true
+            }], 
+          '@babel/preset-react'
+          ],
+          plugins: [],
+        },
+      }],
     }],
   },
   output : {

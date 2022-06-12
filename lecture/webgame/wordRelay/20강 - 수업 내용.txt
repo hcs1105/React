@@ -1,0 +1,5 @@
+1. 수업 일자 : 2022.06.12
+2. 담당 강사 : Zerocho 선생님
+
+▣ React Hooks에서 this를 쓰지 않음.
+▣ React Hooks에서 ref에 'current'를 항상 붙여야 함. 

@@ -1,4 +1,5 @@
 const path = require('path');
+const RefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
   name : 'word-relay-setting', // 웹팩 설정 환경 이름
@@ -26,13 +27,22 @@ module.exports = {
             }], 
           '@babel/preset-react'
           ],
-          plugins: [],
+          plugins: ['react-refresh/babel'],
         },
       }],
     }],
   },
+  plugins: [
+    new RefreshWebpackPlugin()
+  ],
   output : {
     path : path.join(__dirname, 'dist'), // __dirname : 현재 폴더 경로(F:\자바스크립트 스터디\React\lecture\webgame\wordRelay\dist)
-    filename : 'app.js' // 출력할 파일 이름 지정
+    filename : 'app.js', // 출력할 파일 이름 지정
+    publicPath : '/dist/',
   }, // 출력
+  devServer: {
+    devMiddleware: { publicPath : '/dist/' },
+    static: { directory: path.resolve(__dirname) },
+    hot: true
+  }
 };

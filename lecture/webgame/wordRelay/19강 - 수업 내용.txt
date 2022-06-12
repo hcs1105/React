@@ -1,0 +1,27 @@
+1. 수업 일자 : 2022.06.12
+2. 담당 강사 : Zerocho 선생님
+
+▣ 핫 리로딩(기존 데이터를 유지하면서 화면이 리프레쉬되는 것)을 설치하는 방법
+  - npm i -D react-refresh @pmmmwh/react-refresh-webpack-plugin
+
+▣ 웹팩 데브 서버를 설치하는 방법
+  - npm i -D webpack-dev-server
+  - package.json 파일에서 webpack-cli 버전이 4.x이면, scripts의 dev 키 값을 'webpack serve --env development'로 변경
+    ※ 참고 : webpack-cli 버전이 3.x일 때 dev 키 값은 'webpack-dev-server --hot'이었음.
+  - webpack.config.js 파일에 다음과 같은 명령어를 입력함.
+    - const RefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+    - plugins: [
+        new RefreshWebpackPlugin()
+      ],
+    - options : {
+        ...
+        plugins: [
+            'react-refresh/babel'
+          ],
+    }
+    - devServer: {
+        hot : true,
+    }
+
+    ▣ path : 실제 경로
+    ▣ publicPath : 가상 경로(서버가 브라우저에게 제공하는 결과물 간의 상대 경로) 

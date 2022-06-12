@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>바벨을 이용하여 리액트를 JSX 문법으로 표현하기</title>
+  <script src="plugins/react@18.development.js"></script>
+  <script src="plugins/react-dom@18.development.js"></script>
+  <!-- <script src="plugins/react@18.production.min.js"></script> -->
+  <!-- <script src="plugins/react-dom@18.production.min.js"></script> -->
+  <script src="plugins/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    'use strict';
+    
+    class LikeButton extends React.Component {
+        constructor(props){
+            super(props);
+            this.state = { // 데이터
+                liked : false
+            };
+        }
+        render(){
+          if(this.state.liked) {
+              return 'You liked this.';
+          }
+          // return React.createElement('button', {onClick:() => this.setState({liked: true})}, 'Liked'); // 화면
+          return (<button onClick={() => this.setState({liked: true})}>Liked</button>);
+        }
+    }
+
+    // ReactDOM.render(React.createElement(LikeButton), document.querySelector('#root'));
+    // ReactDOM.render(<LikeButton />, document.querySelector('#root')); - React 17버전
+    ReactDOM.createRoot(document.querySelector('#root')).render(<LikeButton />); // - React 18버전
+</script> 
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>클래스형으로 데이터를 화면에 표시하기</title>
+  <script src="plugins/react@18.development.js"></script>
+  <script src="plugins/react-dom@18.development.js"></script>
+  <!-- <script src="plugins/react@18.production.min.js"></script> -->
+  <!-- <script src="plugins/react-dom@18.production.min.js"></script> -->
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    'use strict';
+    
+    class LikeButton extends React.Component {
+        constructor(props){
+            super(props);
+            this.state = { // 데이터
+                liked : false
+            };
+        }
+        render(){
+          if(this.state.liked) {
+              return 'You liked this.';
+          }
+          return React.createElement('button', {onClick:() => this.setState({liked: true})}, 'Liked'); // 화면
+        }
+    }
+
+    ReactDOM.render(React.createElement(LikeButton), document.querySelector('#root'));
+</script> 
+</body>
+</html>

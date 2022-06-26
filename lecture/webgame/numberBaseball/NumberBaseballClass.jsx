@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Tries from './Tries';
 
 function getNumbers(){ // 숫자 4개를 겹치지 않고 랜덤하게 뽑는 함수
 
@@ -16,6 +17,14 @@ class NumberBaseball extends Component {
 
   onChangeInput = () => {};
 
+  fruits = [
+    {fruit : '사과', taste : '맛있다'}, 
+    {fruit : '배', taste : '좋다'}, 
+    {fruit : '복숭아', taste : '괜찮다'}, 
+    {fruit : '딸기', taste : '깔끔하다'}, 
+    {fruit : '바나나', taste : '시원하다'}
+  ];
+
   render() {
     return (
       <>
@@ -25,17 +34,11 @@ class NumberBaseball extends Component {
         </form>
         <div>시도 : {this.state.tries.length}</div>
         <ul>
-          {[
-              {fruit : '사과', taste : '맛있다'}, 
-              {fruit : '배', taste : '좋다'}, 
-              {fruit : '복숭아', taste : '괜찮다'}, 
-              {fruit : '딸기', taste : '깔끔하다'}, 
-              {fruit : '바나나', taste : '시원하다'}
-            ].map((v, i) => (
-                <li key={v.fruit + v.taste}><strong>{v.fruit}</strong> - {i}</li>
-              )
-            )
-          }
+          {this.fruits.map((v, i) => {
+            return (
+              <Tries value={v} index={i} />
+            );
+          })}
         </ul>
       </>
     );

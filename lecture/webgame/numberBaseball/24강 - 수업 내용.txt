@@ -1,0 +1,65 @@
+1. 수업 일자 : 2022.06.26
+2. 담당 강사 : Zerocho 선생님
+
+▣ 반복문을 가독성 있게 표현할 수 있음.
+  ⦿ 가독성을 고려하지 않는 경우
+  render() {
+    return (
+      <>
+        <h1>{this.state.result}</h1>
+        <form onSubmit={this.onSubmitForm}>
+          <input type="number" value={this.state.value} onChange={this.onChangeInput} />
+        </form>
+        <div>시도 : {this.state.tries.length}</div>
+        <ul>
+          {[
+              {fruit : '사과', taste : '맛있다'}, 
+              {fruit : '배', taste : '좋다'}, 
+              {fruit : '복숭아', taste : '괜찮다'}, 
+              {fruit : '딸기', taste : '깔끔하다'}, 
+              {fruit : '바나나', taste : '시원하다'}
+            ].map((v, i) => (
+                <li key={v.fruit + v.taste}><strong>{v.fruit}</strong> - {i}</li>
+              )
+            )
+          }
+        </ul>
+      </>
+    );
+  }
+
+  ⦿ 가독성을 고려한 경우
+  fruits = [
+    {fruit : '사과', taste : '맛있다'}, 
+    {fruit : '배', taste : '좋다'}, 
+    {fruit : '복숭아', taste : '괜찮다'}, 
+    {fruit : '딸기', taste : '깔끔하다'}, 
+    {fruit : '바나나', taste : '시원하다'}
+  ];
+
+  render() {
+    return (
+      <>
+        <h1>{this.state.result}</h1>
+        <form onSubmit={this.onSubmitForm}>
+          <input type="number" value={this.state.value} onChange={this.onChangeInput} />
+        </form>
+        <div>시도 : {this.state.tries.length}</div>
+        <ul>
+          {this.fruits.map((v, i) => (
+                <li key={v.fruit + v.taste}><strong>{v.fruit}</strong> - {i}</li>
+              )
+            )
+          }
+        </ul>
+      </>
+    );
+  }
+
+▣ 컴포넌트로 분리한 이유
+  - 성능 최적화
+  - 코드가 길어질 경우를 대비하여 가독성 고려
+  - 재사용성
+▣ 속성을 HTML은 'attribute', React는 'props'로 표현함.
+▣ props 속성은 부모 컴포넌트한테 물러받은 유산이라고 생각하면 이해하기 편함.
+▣ props 속성이 사용되면서 컴포넌트 사이에 부모-자식 관계가 발생함.

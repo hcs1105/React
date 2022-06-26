@@ -1,0 +1,12 @@
+1. 수업 일자 : 2022.06.26
+2. 담당 강사 : Zerocho 선생님
+
+▣ state() 메소드가 바뀔 때마다 render() 메소드 내부가 재실행됨.
+▣ 클래스형 컴포넌트에서 constructor를 쓰지 않아도 됨.
+▣ input 태그에서 value 속성과 onChange 이벤트는 세트로 쓰임.
+  <input type="number" maxLength={4} value={this.state.value} onChange={this.onChangeInput} />
+▣ input 태그에서 value 속성과 onChange 이벤트를 세트로 쓰기 싫으면 다음과 같이 표현함.
+  <input type="number" maxLength={4} defaultValue={this.state.value} />
+▣ 커스텀 메소드는 화살표 함수로 적어야 됨. 왜냐하면, 화살표 함수를 쓰지 않으면 constructor를 써야 되므로.
+▣ 변하는 것은 state() 메소드에 적음.
+▣ map() 메소드는 React에서 반복문을 사용할 때 적용돰.

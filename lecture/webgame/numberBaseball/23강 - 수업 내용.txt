@@ -1,0 +1,64 @@
+1. 수업 일자 : 2022.06.26
+2. 담당 강사 : Zerocho 선생님
+
+▣ React에서 반복문을 2차원 배열로 표현할 수 있음.
+  <ul>
+    {[
+      ['사과', '맛있다'], 
+      ['배', '좋다'], 
+      ['복숭아', '괜찮다'], 
+      ['딸기', '깔끔하다'], 
+      ['바나나', '시원하다']
+     ].map((v) => {
+        return (
+          <li><strong>{v[0]}</strong> - {v[1]}</li>
+        );
+      })
+    }
+  </ul>
+▣ 2차원 배열의 원소를 객체로 표현할 수 있음.
+  <ul>
+    {[
+      {fruit : '사과', taste : '맛있다'}, 
+      {fruit : '배', taste : '좋다'}, 
+      {fruit : '복숭아', taste : '괜찮다'}, 
+      {fruit : '딸기', taste : '깔끔하다'}, 
+      {fruit : '바나나', taste : '시원하다'}
+     ].map((v) => {
+        return (
+          <li><strong>{v.fruit}</strong> - {v.taste}</li>
+        );
+      })
+    }
+  </ul>
+▣ map() 메소드를 사용할 때 React는 key 속성을 보고 같은 컴포넌트인지 판단하므로 key 속성값을 고유하게 적어야 함.
+  <ul>
+    {[
+      {fruit : '사과', taste : '맛있다'}, 
+      {fruit : '배', taste : '좋다'}, 
+      {fruit : '복숭아', taste : '괜찮다'}, 
+      {fruit : '딸기', taste : '깔끔하다'}, 
+      {fruit : '바나나', taste : '시원하다'}
+     ].map((v) => {
+        return (
+          <li key={v.fruit + v.taste}><strong>{v.fruit}</strong> - {v.taste}</li>
+        );
+      })
+    }
+  </ul>
+▣ map() 메소드 안에 있는 화살표 함수는 중괄호({})와 return을 생략할 수 있음.
+  <ul>
+    {[
+      {fruit : '사과', taste : '맛있다'}, 
+      {fruit : '배', taste : '좋다'}, 
+      {fruit : '복숭아', taste : '괜찮다'}, 
+      {fruit : '딸기', taste : '깔끔하다'}, 
+      {fruit : '바나나', taste : '시원하다'}
+     ].map((v) => (
+        <li key={v.fruit + v.taste}><strong>{v.fruit}</strong> - {v.taste}</li>
+       )
+     )
+    }
+  </ul>
+▣ 요소만 추가되는 배열은 i(=index)를 써도 됨.
+▣ key 속성값에 i를 쓰면 성능 최적화에 문제되므로 key 속성값에 i를 쓰면 안 됨.

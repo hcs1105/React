@@ -21,16 +21,21 @@ class NumberBaseball extends Component {
       <>
         <h1>{this.state.result}</h1>
         <form onSubmit={this.onSubmitForm}>
-          <input type="text" value={this.state.value} onChange={this.onChangeInput} />
+          <input type="number" value={this.state.value} onChange={this.onChangeInput} />
         </form>
         <div>시도 : {this.state.tries.length}</div>
         <ul>
-          {['사과', '배', '복숭아', '딸기', '바나나'].map((v) => {
-            return (
-              <li>{v}</li>
-            );
-          })}
-          <li></li>
+          {[
+              {fruit : '사과', taste : '맛있다'}, 
+              {fruit : '배', taste : '좋다'}, 
+              {fruit : '복숭아', taste : '괜찮다'}, 
+              {fruit : '딸기', taste : '깔끔하다'}, 
+              {fruit : '바나나', taste : '시원하다'}
+            ].map((v, i) => (
+                <li key={v.fruit + v.taste}><strong>{v.fruit}</strong> - {i}</li>
+              )
+            )
+          }
         </ul>
       </>
     );

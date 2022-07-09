@@ -12,7 +12,7 @@ function getNumbers(){ // 숫자 4개를 겹치지 않고 랜덤하게 뽑는 �
   return array;
 }
 
-class NumberBaseball extends Component {
+class NumberBaseballClass extends Component {
   state = {
     result : '',
     value : '',
@@ -27,13 +27,39 @@ class NumberBaseball extends Component {
         result : '홈런',
         tries : [...this.state.tries, { try : this.setState.value, result : '홈런'}]
       });
-    } else {
+      alert('게임을 다시 시작합니다.');
+      this.setState({
+        value : '',
+        answer : getNumbers(),
+        tries : []
+      });
+    } else { // 입력한 숫자가 틀린 경우
       const answerArray = this.state.value.split('').map((v) => parseInt(v));
       let strike = 0;
       let ball = 0;
 
-      if(this.state.tries.length >= 9) {
-
+      if(this.state.tries.length >= 10) { // 10번 이상 틀리면
+        this.setState({
+          result : `10번 넘게 틀려서 실패! 답은 ${this.state.answer.join(',')}입니다.`
+        });
+        alert('게임을 다시 시작합니다.');
+        this.setState({
+          value : '',
+          answer : getNumbers(),
+          tries : []
+        });
+      } else {
+        for(let i = 0; i < 4; i++) {
+          if(answerArray[i] === this.state.answer[i]) {
+            strike += 1;
+          } else if(this.state.answer.includes(answerArray[i])) {
+            ball += 1;
+          }
+        }
+        this.setState({
+          tries : [...this.state.tries, { try : this.setState.value, result : `${strike} 스트라이크, ${ball}볼입니다.`}],
+          value : ''
+        });
       }
     }
     console.log(this.state.value);
@@ -47,14 +73,6 @@ class NumberBaseball extends Component {
     });
   };
 
-  fruits = [
-    {fruit : '사과', taste : '맛있다'}, 
-    {fruit : '배', taste : '좋다'}, 
-    {fruit : '복숭아', taste : '괜찮다'}, 
-    {fruit : '딸기', taste : '깔끔하다'}, 
-    {fruit : '바나나', taste : '시원하다'}
-  ];
-
   render() {
     return (
       <>
@@ -64,9 +82,9 @@ class NumberBaseball extends Component {
         </form>
         <div>시도 : {this.state.tries.length}</div>
         <ul>
-          {this.fruits.map((v, i) => {
+          {this.state.tries.map((v, i) => {
             return (
-              <Tries key={v.fruit + v.taste} value={v} index={i} />
+              <Tries key={`${i+1}차 시도 :`} tryInfo={v} />
             );
           })}
         </ul>
@@ -75,4 +93,4 @@ class NumberBaseball extends Component {
   }
 }
 
-export default NumberBaseball; // import NumberBaseball
+export default NumberBaseballClass; // import NumberBaseballClass

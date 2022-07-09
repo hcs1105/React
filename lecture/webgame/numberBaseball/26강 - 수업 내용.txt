@@ -1,56 +1,22 @@
-1. 수업 일자 : 2022.06.26
+1. 수업 일자 : 2022.06.26, 2022.07.09
 2. 담당 강사 : Zerocho 선생님
 
 ▣ React에서 push() 메소드를 사용하면 변화를 감지하지 못하므로 전개 연산자를 이용함.
   const array = [];
-  array.push(1);
+  array.push(1); // 1
   console.log(array) // [1]
 
   const array2 = [...array, 2];
   console.log(array2); // [1, 2]
-  console.log(array === array2); // false -> 예전 state와 현재 state가 다르면 render 함수가 실행됨.
+  console.log(array === array2); // false -> 예전 state와 현재 state가 다르므로 render 함수가 실행됨.
 
   const arr = [];
-  arr.push(1);
+  arr.push(1); // 1
   console.log(arr === arr); // true -> 예전 state와 현재 state가 같으므로 render 함수가 실행되지 않음.
 
+  const arr1 = [];
+  const arr2 = [...arr1, 1];
+  console.log(arr2); // [1]
+  console.log(array1 === array2); // false -> 예전 state와 현재 state가 다르므로 render 함수가 실행됨.
 
-▣ 참고로, vue는 if문에서, React는 반복문에서 가독성이 좋지 않음.
-▣ React에서 발생한 문제의 대부분은 props 속성 때문이다. 즉, 컴포넌트 사이의 계층 관계 때문임.
-▣ 컴포넌트 사이의 계층 관계 때문에 발생한 문제들을 해결하기 위해 리덕스와 컨텍스트, 모비스를 이용함.
-▣ jsx 파일의 경우, 주석은 '{/* */}' 이렇게 적어야 함.
-▣ 화살표 함수가 아니면 this 키워드를 쓸 수 없음.
-  onChangeInput(e){
-    this.setState({ // Uncaught TypeError : Cannot read property 'setState' of undefined(this : undefined).
-      value : e.target.Value;
-    });
-  };
-
-  ※ 화살표 함수를 사용하지 않은 상태에서 이런 버그를 수정하려면 다음과 같이 코드를 작성해야 됨.
-
-  class NumberBaseball extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        result : '',
-        value : '',
-        answer : getNumbers(),
-        tries : []
-      };
-      this.onSubmitForm = this.onSubmitForm.bind(this);
-      this.onChangeInput = this.onChangeInput.bind(this);
-    }
-
-    onSubmitForm(e){
-      e.preventDefault();
-      console.log(this.state.value);
-    };
-
-    onChangeInput(e){
-      console.log(this);
-      this.setState({ 
-        value : e.target.value
-      });
-    };
-  }
-▣ 화살표 함수를 쓰면 bind(this)가 자동으로 해결되고 this 키워드를 쓰지 않아도 됨.
+▣ 

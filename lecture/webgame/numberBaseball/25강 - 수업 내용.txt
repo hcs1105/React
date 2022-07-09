@@ -1,4 +1,4 @@
-1. 수업 일자 : 2022.06.26
+1. 수업 일자 : 2022.06.26, 2022.07.09
 2. 담당 강사 : Zerocho 선생님
 
 ▣ map() 메소드 안에 컴포넌트를 추가할 때도 key 속성값을 고유하게 적어야 됨.
@@ -14,7 +14,6 @@
   };
 
   ※ 화살표 함수를 사용하지 않은 상태에서 이런 버그를 수정하려면 다음과 같이 코드를 작성해야 됨.
-
   class NumberBaseball extends Component {
     constructor(props) {
       super(props);
@@ -40,4 +39,24 @@
       });
     };
   }
+
 ▣ 화살표 함수를 쓰면 bind(this)가 자동으로 해결되고 this 키워드를 쓰지 않아도 됨.
+  class NumberBaseball extends Component {
+    state = {
+      result : '',
+      value : '',
+      answer : getNumbers(),
+      tries : []
+    };
+    
+    onSubmitForm = (e) => {
+      e.preventDefault();
+      console.log(this.state.value);
+    };
+
+    onChangeInput = (e) => {
+      this.setState({ 
+        value : e.target.value
+      });
+    };
+  }

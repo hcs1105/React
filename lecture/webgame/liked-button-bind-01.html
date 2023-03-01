@@ -26,7 +26,7 @@
         }
 
         onClickButton() {
-            this.setState({liked: true}); // 객체를 함부로 바꾸지 마라(불변성)
+            this.setState({liked: true}); // 객체를 함부로 바꾸지 말고 복사해라(불변성)
         }                
 
         render(){

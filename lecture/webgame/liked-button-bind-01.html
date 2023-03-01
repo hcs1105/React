@@ -33,6 +33,13 @@
           if(this.state.liked) {
               return 'You liked this.';
           }
+
+          /*
+          const array = []; -> 배열도 객체임.
+          push, pop, unshift, shift, splice : 배열을 직접적으로 수정, 리액트에서는 사용 금지.
+          concat, slice : 새로운 배열을 만들어 냄, 리엑트에서 사용함.
+          */
+
           // return React.createElement('button', {onClick:() => this.setState({liked: true})}, 'Liked'); // 화면
           // return (<button onClick={() => this.setState({liked: true})}>Liked</button>);
           return (<button onClick={this.onClickButton}>Liked</button>);

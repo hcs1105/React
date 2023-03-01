@@ -26,8 +26,8 @@
         }
 
         onClickButton() {
-            this.setState({liked: true}); 
-        }
+            this.setState({liked: true}); // 객체를 함부로 바꾸지 마라(불변성)
+        }                
 
         render(){
           if(this.state.liked) {

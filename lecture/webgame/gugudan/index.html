@@ -12,7 +12,9 @@
 <body>
   <div id="root"></div> 
   <script type="text/babel">
-    // constructor() 메소드를 이용하여 만든 클래스 컴포넌트
+    /* 
+     * constructor() 메소드를 이용하여 만든 클래스 컴포넌트
+     *
     class Gugudan extends React.Component {
       constructor(props) {
         super(props);
@@ -60,9 +62,11 @@
         );
       }
     }
+    */
+   
     /*
-     * Class형 컴포넌트
-     *
+     * constructor() 메소드를 이용하여 만든 클래스 컴포넌트
+     */
     class Gugudan extends React.Component {
       state = {
         firstNum : Math.ceil(Math.random() * 9), // 0~9
@@ -115,7 +119,6 @@
         );
       }
     }
-    */
 
     /*
      * 함수형 컴포넌트

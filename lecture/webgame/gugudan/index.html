@@ -12,6 +12,54 @@
 <body>
   <div id="root"></div> 
   <script type="text/babel">
+    // constructor() 메소드를 이용하여 만든 클래스 컴포넌트
+    class Gugudan extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          firstNum : Math.ceil(Math.random() * 9),
+          secondNum : Math.ceil(Math.random() * 9),
+          value : '',
+          result : '',
+        };
+      }
+
+      onSubmit = e => {
+        e.preventDefault();
+        if(parseInt(this.state.value) === this.state.firstNum * this.state.secondNum) {
+          this.setState({
+            result : `정답 : ${this.state.value}`,
+            firstNum : Math.ceil(Math.random() * 9),
+            secondNum : Math.ceil(Math.random() * 9),
+            value : ''
+          });
+        } else {
+          this.setState({
+            result : '땡',
+            value : ''
+          });
+        }
+      }
+
+      onChange = e => {
+        this.setState({
+          value : e.target.value
+        });
+      }
+
+      render(){
+        return (
+          <div>
+            <p>{this.state.firstNum} 곱하기 {this.state.secondNum}은?</p>  
+            <form onSubmit = {this.onSubmit}>
+              <input type="number" value={this.state.value} onChange={this.onChange} />
+              <button type="submit">입력</button>  
+            </form>
+            <p>{this.state.result}</p>        
+          </div>
+        );
+      }
+    }
     /*
      * Class형 컴포넌트
      *
@@ -71,7 +119,7 @@
 
     /*
      * 함수형 컴포넌트
-     */
+    
     const Gugudan = () => { // 비구조화 할당 문법(구조 분해 할당 문법) 사용
       const [firstNum, setFirstNum] = React.useState(Math.ceil(Math.random() * 9)); 
       const [secondNum, setSecondNum] = React.useState(Math.ceil(Math.random() * 9)); 
@@ -109,7 +157,7 @@
         </React.Fragment>
       );
     }
-
+    */
     ReactDOM.render(<Gugudan />, document.querySelector('#root'));
   </script>
 </body>

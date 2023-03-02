@@ -14,7 +14,6 @@
   <script type="text/babel">
     /* 
      * constructor() 메소드를 이용하여 만든 클래스 컴포넌트
-     *
     class Gugudan extends React.Component {
       constructor(props) {
         super(props);
@@ -29,11 +28,13 @@
       onSubmit = e => {
         e.preventDefault();
         if(parseInt(this.state.value) === this.state.firstNum * this.state.secondNum) {
-          this.setState({
-            result : `정답 : ${this.state.value}`,
-            firstNum : Math.ceil(Math.random() * 9),
-            secondNum : Math.ceil(Math.random() * 9),
-            value : ''
+          this.setState((prevState) => {
+            return {
+              result : '정답 : ' + prevState.value,
+              firstNum : Math.ceil(Math.random() * 9),
+              secondNum : Math.ceil(Math.random() * 9),
+              value : ''
+            };
           });
         } else {
           this.setState({
@@ -63,7 +64,7 @@
       }
     }
     */
-   
+    
     /*
      * constructor() 메소드 없이 클래스 컴포넌트
      */

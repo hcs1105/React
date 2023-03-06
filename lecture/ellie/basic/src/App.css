@@ -43,6 +43,7 @@
   padding: 1rem;
   border-radius: 20px;
   margin-bottom: 1rem;
+  position: relative;
   background: #ebebeb;
   text-align: center;
   box-shadow: 7px 5px 23px -9px rgba(0, 0, 0, .75);
@@ -54,4 +55,16 @@
   width: 200px;
   height: 200px;
   border-radius: 100%;
+}
+
+.new-icon {
+  line-height: 1;
+  padding: 5px;
+  border-radius: 10px;
+  display: inline-block;
+  position: absolute;
+  right: 80px;
+  top: 28px;
+  font-weight: 700;
+  background: #00ff52;
 }

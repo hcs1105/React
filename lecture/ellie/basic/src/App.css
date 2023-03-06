@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+/* 프로필 영역 */
+.profile-area {
+  width: 300px;
+  padding: 1rem;
+  border-radius: 20px;
+  background: #ebebeb;
+  text-align: center;
+  box-shadow: 7px 5px 23px -9px rgba(0, 0, 0, .75);
+  -webkit-box-shadow: 7px 5px 23px -9px rgba(0, 0, 0, .75);
+  -moz-box-shadow: 7px 5px 23px -9px rgba(0, 0, 0, .75);
+}
+
+.profile-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+}

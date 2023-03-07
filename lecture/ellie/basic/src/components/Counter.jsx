@@ -12,7 +12,7 @@ export default function Counter({total, onClick}) {
         <button className="counter-button" onClick={() => {
           setCount((prev) => prev + 1);
           onClick();
-        }}>Add +</button>
+        }}>Add</button>
       </div>
     </div>
   );

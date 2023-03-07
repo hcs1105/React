@@ -42,7 +42,7 @@
   width: 300px;
   padding: 1rem;
   border-radius: 20px;
-  margin-bottom: 1rem;
+  margin: 1rem auto;
   background: #ebebeb;
   text-align: center;
   box-shadow: 7px 5px 23px -9px rgba(0, 0, 0, .75);
@@ -71,5 +71,6 @@
 .avartar-area {
   width: 200px;
   height: 200px;
+  margin: 0 auto;
   position: relative;
 }

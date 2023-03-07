@@ -96,7 +96,12 @@
 }
 
 .counter-number {
+  margin: 0 0 1rem 0;
   font-size: 7rem;
+}
+
+.total-counter {
+  color: #f00;
 }
 
 .counter-button {

@@ -74,3 +74,35 @@
   margin: 0 auto;
   position: relative;
 }
+
+/* 카운터 영역 */
+.counter-container {
+  display: flex;
+  justify-content: center;
+}
+
+.counter-area {
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 2px solid #d77f0c;
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items : center;
+}
+
+.counter-area:hover {
+  background:#f6f3c5;
+}
+
+.counter-number {
+  font-size: 7rem;
+}
+
+.counter-button {
+  padding: 0.2rem 1rem;
+  border-radius: 0.2rem;
+  font-size: 2rem;
+  cursor: pointer;
+  background: #d77f0c linear-gradient(90deg, #d77f0c 0%, #fddc1d 100%); 
+}

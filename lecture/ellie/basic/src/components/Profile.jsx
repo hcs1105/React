@@ -1,10 +1,12 @@
+import React from 'react';
+import Avartar from './Avartar';
+
 export default function Profile({image, name, job, newIcon}){
   return (
     <div className="profile-area">
-      <img src={image} className="profile-img" alt="한창수" />
+      <Avartar image={image} newIcon={newIcon} />
       <h1>{name}</h1>
       <p>{job}</p>
-      {newIcon && <span className="new-icon">New</span>}
     </div>
   );
 }

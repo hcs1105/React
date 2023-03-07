@@ -8,7 +8,7 @@ export default function Counter() {
       <div className="counter-area">
         <span className="counter-number">{count}</span>
         <button className="counter-button" onClick={() => {
-          setCount(count + 1);
+          setCount((prev) => prev + 1);
         }}>Add +</button>
       </div>
     </div>

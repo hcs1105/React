@@ -3,6 +3,10 @@ import React, { useEffect, useState } from 'react';
 export default function Products() {
   const [count, setCount] = useState(0);
   const [products, setProducts] = useState([]);
+  const [checked, setChecked] = useState(false);
+  const handleChange = () => {
+    setChecked((prev) => !prev);
+  }
 
   /**
    * fetch: 브라우저에서 제공하는 API이며 비동기
@@ -20,7 +24,7 @@ export default function Products() {
 
   /* cleanUp() 함수 호출 → setProducts(data) 메소드 실행 → useState([]) 업데이트 */
   useEffect(() => {
-    fetch('../../data/products.json') 
+    fetch(`data/${checked ? 'sales_' : ''}products.json`) 
     .then(res => res.json())
     .then(data => {
       console.log('따뜻한 데이터를 네트워크에서 받아 옴');
@@ -30,10 +34,12 @@ export default function Products() {
     return () => { 
       console.log('깨끗하게 청소하는 일들을 합니다.');
     }
-  }, []);
+  }, [checked]);
 
   return (
     <>
+      <input type="checkbox" id="checkbbox" checked={checked} onChange={handleChange} />
+      <label htmlFor="checkbbox">Show only Hot Sale</label>
       <ul>
         {products.map((product) => (
           <li key={product.id}>
@@ -44,7 +50,7 @@ export default function Products() {
           </li>
         ))}
       </ul>
-      <button type="button" onClick={() => setCount(prev => prev + 1)}>{count}</button>
+      {checked && <button type="button" onClick={() => setCount(prev => prev + 1)}>{count}</button>}
     </>
   );
 } 

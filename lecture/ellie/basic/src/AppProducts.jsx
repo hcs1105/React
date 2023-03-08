@@ -7,7 +7,7 @@ export default function AppProducts() {
 
   return (
     <>
-      {showProducts && <Products />}
+      {showProducts && <Products />}  
       <button type="button" onClick={() => {setShowProducts(ww => !ww)}}>Toggle</button>
     </>
   );

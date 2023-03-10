@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export default function AppMentors() {
-  const [person, setPerson] = useState({
+  const initialPerson = {
     name: '창수',
     title: '주니어 개발자',
     mentors: [{
@@ -15,7 +15,8 @@ export default function AppMentors() {
       name : 'Steve Jobs',
       title : '시니어 개발자',
     }]
-  });
+  }
+  const [person, setPerson] = useState(initialPerson);
 
   const changeMentorName = () => {
     const prev = prompt('누구의 이름을 바꾸고 싶은가요?');

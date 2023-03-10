@@ -13,7 +13,9 @@ export default function AppXY() {
     setCoordX(e.clientX);
     setCoordY(e.clientY);
     */
-   setPosition({x:e.clientX, y:e.clientY});
+    // setPosition({x:e.clientX, y:e.clientY});
+    // 만약 수평으로만 이동이 가능하려면
+    setPosition(prev => ({x:e.clientX, y:prev.y}));
   }
 
   return (

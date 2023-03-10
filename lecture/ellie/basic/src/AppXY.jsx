@@ -6,7 +6,7 @@ export default function AppXY() {
   const [x, setCoordX] = useState(0);
   const [y, setCoordY] = useState(0);
   */
-  const [position, setPosition] = useState({x:0, y:0});
+  const [position, setPosition] = useState({x:0, y:0, z:0});
   const onPoinerMove = (e) => {
     console.log(e.clientX, e.clientY);
     /*
@@ -15,7 +15,7 @@ export default function AppXY() {
     */
     // setPosition({x:e.clientX, y:e.clientY});
     // 만약 수평으로만 이동이 가능하려면
-    setPosition(prev => ({x:e.clientX, y:prev.y}));
+    setPosition(prev => ({...prev, x:e.clientX}));
   }
 
   return (

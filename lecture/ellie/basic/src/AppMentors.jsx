@@ -17,9 +17,10 @@ export default function AppMentors() {
     }]
   });
 
-  const changeMentor = () => {
+  const changeMentorName = () => {
     const prev = prompt('누구의 이름을 바꾸고 싶은가요?');
     const current = prompt('이름을 무엇으로 바꾸고 싶은가요?');
+
     setPerson(person => ({
       ...person, 
       mentors: person.mentors.map(mentor => {
@@ -29,7 +30,26 @@ export default function AppMentors() {
         return mentor;
       })
     }));
-  }
+  };
+
+  const addMentorName = () => {
+    const name = prompt('멘토의 이름은?');
+    const title = prompt('멘토의 직함은?');
+
+    setPerson(person => ({
+      ...person, 
+      mentors : [...person.mentors, {name, title}]
+    }));
+  };
+
+  const deleteMentorName = () => {
+    const name = prompt('누구를 삭제하고 싶은가요?');
+
+    setPerson(person => ({
+      ...person, 
+      mentors: person.mentors.filter(mentor => mentor.name != name)
+    }));
+  };
 
   return (
     <div>
@@ -40,7 +60,9 @@ export default function AppMentors() {
           <li key={mentor.id}>{mentor.name} {mentor.title}</li>
         ))}
       </ul>
-      <button type="button" onClick={changeMentor}>멘토 이름 바꾸기</button>
+      <button type="button" onClick={changeMentorName}>멘토 이름 바꾸기</button>
+      <button type="button" onClick={addMentorName}>멘토 추가하기</button>
+      <button type="button" onClick={deleteMentorName}>멘토 삭제하기</button>
     </div>
   );
 }

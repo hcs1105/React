@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useImmer } from 'use-immer';
 
 export default function AppMentorsImmer() {
   const initialPerson = {
@@ -16,12 +17,12 @@ export default function AppMentorsImmer() {
       title : '시니어 개발자',
     }]
   }
-  const [person, setPerson] = useState(initialPerson);
+  const [person, updatePerson] = useImmer(initialPerson);
 
   const changeMentorName = () => {
     const prev = prompt('누구의 이름을 바꾸고 싶은가요?');
     const current = prompt('이름을 무엇으로 바꾸고 싶은가요?');
-
+    /*
     setPerson(person => ({
       ...person, 
       mentors: person.mentors.map(mentor => {
@@ -30,7 +31,7 @@ export default function AppMentorsImmer() {
         } 
         return mentor;
       })
-    }));
+    }));*/
   };
 
   const addMentorName = () => {

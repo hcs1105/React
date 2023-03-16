@@ -1,0 +1,18 @@
+body {
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.header, .footer {
+  display:flex;
+  justify-content:center;
+  background:#00003a;
+  color:#fff;
+}
+
+.main {
+  height:100%;
+  flex:1 1 auto;
+}

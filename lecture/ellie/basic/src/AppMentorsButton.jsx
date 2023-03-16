@@ -25,18 +25,6 @@ export default function AppMentors() {
     const current = prompt('이름을 무엇으로 바꾸고 싶은가요?');
 
     dispatch({type : 'updated', prev, current});
-
-    /*
-    setPerson(person => ({
-      ...person, 
-      mentors: person.mentors.map(mentor => {
-        if(mentor.name === prev) {
-          return {...mentor, name: current};
-        } 
-        return mentor;
-      })
-    }));
-    */
   };
 
   const addMentorName = () => {
@@ -44,26 +32,12 @@ export default function AppMentors() {
     const title = prompt('멘토의 직함은?');
 
     dispatch({type : 'added', name, title});
-
-    /*
-    setPerson(person => ({
-      ...person, 
-      mentors : [...person.mentors, {name, title}]
-    }));
-    */
   };
 
   const deleteMentorName = () => {
     const name = prompt('누구를 삭제하고 싶은가요?');
 
     dispatch({type : 'deleted', name});
-
-    /*
-    setPerson(person => ({
-      ...person, 
-      mentors: person.mentors.filter(mentor => mentor.name != name)
-    }));
-    */
   };
 
   return (

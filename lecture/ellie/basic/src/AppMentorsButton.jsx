@@ -17,7 +17,7 @@ export default function AppMentors() {
       title : '시니어 개발자',
     }]
   }
-  // const [person, setPerson] = useState(initialPerson);
+  
   const [person, dispatch] = useReducer(personReducer, initialPerson);
 
   const changeMentorName = () => {

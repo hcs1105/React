@@ -24,7 +24,7 @@ const Button = styled.button`
   };
 `;
 
-export default function App() {
+export default function AppStyle() {
   return (
     <>
       <Button1 />

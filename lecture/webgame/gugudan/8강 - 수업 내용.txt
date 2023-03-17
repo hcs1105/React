@@ -1,4 +1,4 @@
-1. 수업 일자 : 2022.04.20, 2022.04.23
+1. 수업 일자 : 2022.04.20, 2022.04.23, 2023.03.02
 2. 담당 강사 : Zerocho 선생님
 
 ▣ React는 최상위 <div> 요소 안에 <div></div>로 감싸야 마크업에 에러가 발생하지 않음.
@@ -16,6 +16,16 @@
     </React.Fragment>
   );
 ▣ Form 요소가 있으면 onSubmit 이벤트이고 없으면 onClick 이벤트를 사용함(강사의 경우).
+  return (
+    <React.Fragment>
+      <p>{this.state.firstNum} 곱하기 {this.state.secondNum}은?</p>  
+      <div>
+        <input type="number" value={this.state.value} onChange={this.onChange} />
+        <button type="submit" onClick={this.onSubmit}>입력</button>  
+      </div>
+      <p>{this.state.result}</p>
+    </React.Fragment>
+  );
 ▣ 함수를 별도로 분리할 때 function 키워드를 사용하면 this의 대상이 달라지므로 무조건 화살표 함수 키워드를 사용함.
 ▣ constructor 키워드를 제외하면 다음과 같이 사용될 수 있음.
   constructor(props) {
@@ -29,7 +39,7 @@
   }
 
   [같은 표현] - 실무에서 쓰는 방식
-  this.state = {
+  state = {
     firstNum : Math.ceil(Math.random() * 9), // 0~9
     secondNum : Math.ceil(Math.random() * 9),
     value : '',

@@ -1,21 +1,30 @@
 import './App.css';
 import { RouterProvider, createBrowserRouter} from 'react-router-dom';
+import Videos from './pages/Videos';
+import NotFound from './pages/NotFound';
+import Root from './pages/Root';
+import Home from './pages/Home';
 
 const router = createBrowserRouter([
   {
     path : '/',
-    element : <p>Home</p>,
-    errorElement : <p>Not Found</p>
-  },
-  {
-    path : '/videos',
-    element : <p>Videos</p>,
+    element : <Root />,
+    errorElement : <NotFound />,
+    children : [
+      { 
+        index : true, 
+        element : <Home /> 
+      }, 
+      {
+        path : '/videos',
+        element : <Videos />,
+      }
+    ],
   },
 ]);
 
 function App() {
   return <RouterProvider router={router} />;
-  // return <p>App</p>;
 }
 
 export default App;

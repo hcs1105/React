@@ -5,7 +5,7 @@ export default function Products() {
   const [count, setCount] = useState(0);
   const [checked, setChecked] = useState(false);
   const {isLoading, error, data:products} = useQuery(['products', checked], async () => { // 캐시를 위한 키를 배열 형태로 첫 번째 파라미터 지정
-    console.log('fetching...');
+    console.log('fetching...', checked);
     return fetch(`data/${checked ? 'sales_' : ''}products.json`) 
     .then(res => res.json());
   }, {

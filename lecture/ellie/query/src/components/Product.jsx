@@ -8,6 +8,8 @@ export default function Products() {
     console.log('fetching...');
     return fetch(`data/${checked ? 'sales_' : ''}products.json`) 
     .then(res => res.json());
+  }, {
+    staleTime : 1000 * 60 * 5,
   });
   const handleChange = () => {
     setChecked(prev => !prev);

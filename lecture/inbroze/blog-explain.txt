@@ -1,0 +1,126 @@
+[1강 React 소개 및 CRA 폴더 설명]
+
+⦿ React의 정의
+  - 사용자 인터페이스를 만들기 위한 자바스크립트 라이브러리
+
+⦿ React를 개발한 이유
+  - 지속적으로 데이터가 변화하는 대규모 어플리케이션을 구축하기 위해
+
+⦿ CRA 폴더 설명
+  1. node_modules : 설치된 라이브러리들을 모아 놓은 폴더
+     - 해당 폴더를 지워도 명령어 'npm install'를 실행하면 package.json 파일에 기록된 dependency들이 설치됨. 
+  2. public : 정적인(static) 리소스들을 모아 놓은 폴더
+  3. src : 코드를 작성한 파일들을 모아 놓은 폴더
+  3. package.json : 프로젝트와 프로젝트에 설치된 라이브러리들에 대한 정보를 json 형태로 기록한 파일
+
+[2강 컴포넌트의 정의와 사용 목적]
+
+⦿ 컴포넌트(components)
+  - 재사용 가능한 UI 부품
+  - HTML 요소들의 집합
+  - 자바스크립트 함수 → ∴ 함수 컴포넌트(입력 : props, 출력 : JSX 문법으로 작성한 UI)를 구성할 수 있음.
+  - 컴포넌트로 함수를 사용하는 이유
+    • 특정 역할을 수행하려고(features, pages, ...)  
+    • 재사용되는 로직을 모듈화해서 불필요한 반복 작업을 줄이려고(좁은 의미의 컴포넌트)
+
+[3강 JSX 소개]
+
+⦿ JSX(JavaScript XML)란?
+  - 자바스크립트에 XML을 추가한 자바스크립트 확장 문법 → ∴ 자바스크립트 안에 HTML 문법을 사용할 수 있다.
+  - JSX는 자바스크립트가 아니므로 브라우저가 이해할 수 없다. → ∴ React는 Babel이라는 컴파일러를 이용하여 JSX를 JS로 변환해 준다.
+  - JSX 문법 규칙
+    • class 대신 className 사용  
+    • 무조건 하나의 부모 요소로 감싸야 한다. 
+    • div 요소로 묶어 주기 싫으면 빈 태그(<></>)로 감싼다. → 빈 태그는 Fragment라고 부르며 화면에 렌더링되지 않음.  
+    • JSX 안에서 JS 표현식을 쓰고 싶으면 중괄호({})를 사용한다.
+
+[4강 Props 소개]     
+
+⦿ Props란?
+  - Properties(속성)의 약자
+  - React에서 데이터의 전달 방향은 부모 컴포넌트 → 자식 컴포넌트
+  - 부모 컴포넌트는 자식 컴포넌트에게 Props로 데이터를 전달
+
+[5강 state와 useState 함수 소개]     
+
+⦿ state란?
+  - 컴포넌트 내부에서 바뀔 수 있는 값 
+  - 특정 상황이나 시점에 따라 달라질 수 있는 값은 state를 만들어 처리해줘야 됨.
+  - 예시 : Count 수, input 요소의 value 속성값
+
+⦿ useState 함수란?
+  - 예시 : const [count, setCount] = useState(0);
+  - 컴포넌트에서 상태(State)를 다룰 때 사용하는 함수  
+  - useState 함수의 인자에 State의 초기값으로 설정해 줄 값을 넣어 줌.  
+  - useState 함수는 배열을 반환함.
+    • 0번째 인덱스에는 state 값  
+    • 1번째 인덱스에는 state 값을 업데이트할 때 사용하는 함수(setter) 
+  - 규칙
+    • state 값은 반드시 setter 함수로만 변경할 수 있음. 
+    • setter 함수는 state 이름 앞에 "set"을 붙여서 작성하는 것이 일반적임.
+
+[6강 변수와 비교하여 state를 사용하는 이유]
+
+⦿ 변화하는 값을 화면에 보여줘야 할 때
+  → 렌더링이 일어나야 변경 사항이 반영된 최신 버전의 화면이 DOM에 적용되어 우리가 바뀐 화면을 볼 수 있는 거야!
+  - state가 아닌 일반 변수는 렌더링을 일으킬(trigger) 수 없음. 
+  - 렌더링(Rendering) : 최신 버전의 컴포넌트 상황을 가져오기 위해 컴포넌트를 실행하는 것
+    • 컴포넌트는 함수, 즉 렌더링 발생 === 컴포넌트 실행 === 함수 호출  
+    • 함수 호출 : 컴포넌트 내부에 있는 코드들이 모두 재실행됨. 
+
+⦿ 컴포넌트가 화면에 그려지는 과정
+  1. 렌더링 발생시키기(Trigger a render)
+     - 렌더링은 2가지 경우에 발생함.
+       • 최초 앱 실행 시 혹은 새로고침할 때 : initial rendering
+         const rootElement = document.getElementById('root');
+         const root = ReactDOM.createRoot(rootElement);
+         root.render(
+           <React.StrictMode>
+             <App />
+           </React.StrictMode>
+         );
+       • setter 함수에 의해 state 값이 변경되었을 때 : re-rendering
+         const updateCount = (arg) => {
+           setCount(prev => prev + arg);
+         };
+
+  2. 컴포넌트 렌더링 수행하기(React renders your components)
+     - 렌더링(Rendering) : 최신 버전의 컴포넌트 상황을 가져오기 위해 컴포넌트를 실행하는 것
+       • 최초 앱 실행 시 혹은 새로고침할 때 루트 컴포넌트 및 그의 모든 자식 컴포넌트를 실행
+       • state 값이 변경되었을 때 state를 가진 컴포넌트와 그의 모든 자식 컴포넌트를 실행
+         
+  3. DOM에 변경 시힝 반영하기(React commits changes to the DOM)
+     • React는 최소한의 변경 사항만 반영되기를 원하므로 변경된 부분만 DOM에 반영됨
+         
+  4. 브라우저가 화면에 다시 그리기(Painting)
+
+⦿ 관련 자료 - https://react.dev/learn/render-and-commit
+
+[7강 다양한 타입의 state 살펴보기]
+
+⦿ input 요소의 타입이 number와 text인 경우
+  - number인 경우 : onChange={(e) => {setNumber(e.target.value);}}
+  - text인 경우 : onChange={(e) => {setName(e.target.value);}}
+
+⦿ input 요소의 타입이 checkbox인 경우
+  - checkbox인 경우 : onChange={(e) => {setIschecked(e.target.checked);}}
+
+[8강 배열과 객체 타입의 state 살펴보기]
+
+⦿ 배열 및 객체 State를 변경할 때
+  - 다른 타입의 state와 마찬가지로 setter 함수를 사용하여 state를 업데이트해 줘야 함.
+  - 새로운 배열 혹은 객채를 만들어서 setter 함수를 전달해 줘야 함.
+    setPersonList([...personList, 
+      {
+        id : newId++,
+        name : newName,
+      }
+    ]);
+
+    setPerson({
+      ...person,
+      firstName : e.target.value,
+    });
+
+⦿ 관련 자료(Updating Objects in State) - https://react.dev/learn/updating-objects-in-state
+⦿ 관련 자료(Updating Arrays in State) - https://react.dev/learn/updating-arrays-in-state
